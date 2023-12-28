@@ -62,7 +62,7 @@ public class ShoppingCart {
             System.out.println("List of products in your shopping cart: ");
             for (int i=0;i<Wishlist.productList.size();i++) {
                 Product P = Wishlist.productList.get(i);
-                System.out.println(i+" - Name: "+P.getName()+" Quantity: "+P.getQuantity()+" Total Price: "+P.getQuantity()*P.getPrice());
+                System.out.println(i+" - Name: "+P.getName()+" | Quantity: "+P.getQuantity()+" | Total Price: "+P.getQuantity()*P.getPrice());
                 if (!inv.idSearch(P.getId())) {
                     System.out.println("This product has been removed from inventory, it will be immediately removed from your shopping cart");
                     this.removeFromWishlist(i);
@@ -71,6 +71,7 @@ public class ShoppingCart {
         }
     }
     public double order(int i,ProductList inv,Order orderList, Scanner myObj) {
+        String userInput;
         if (Wishlist.productList.isEmpty()) {
             System.out.println("Your Shopping cart is empty");
             return 0;
@@ -86,7 +87,11 @@ public class ShoppingCart {
                     int c;
                     do {
                         System.out.println("Choose new quantity");
-                        c= myObj.nextInt();
+                        while (!myObj.hasNextInt()) {
+                            userInput = myObj.next();
+                            System.out.println("Invalid input. Please enter an int");
+                        }
+                        c = myObj.nextInt();
                         myObj.nextLine();
                     } while (c>Pi.getQuantity());
                     updateQuantity(i, c);

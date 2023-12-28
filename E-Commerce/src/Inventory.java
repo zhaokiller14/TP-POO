@@ -74,7 +74,7 @@ public class Inventory  {
             System.out.println("List of products in inventory: ");
             for (int i=0;i<inventory.productList.size();i++) {
                 Product P=inventory.productList.get(i);
-                System.out.println(i+" - Name: "+P.getName()+" Price: "+P.getPrice()+" State: "+P.getState());
+                System.out.println(i+" - Name: "+P.getName()+" | Price: "+P.getPrice()+" | State: "+P.getState());
                 if (P.getState()==StockState.LOW_STOCK) {
                     System.out.println("         Quantity: "+P.getQuantity());
                 }
@@ -84,7 +84,7 @@ public class Inventory  {
     }
 
     public void search(Scanner scanner) {
-
+        String userInput;
         // Get search criteria from the user
         System.out.println("Enter search criteria:");
         System.out.print("Name (enter 'any' for any): ");
@@ -93,7 +93,12 @@ public class Inventory  {
         System.out.print("Minimum Price (enter 'any' for any): ");
         double minPrice;
         try {
+            while (!scanner.hasNextDouble() && !scanner.next().equals("any")) {
+                userInput = scanner.next();
+                System.out.println("Invalid input. Please enter a double");
+            }
             minPrice = Double.parseDouble(scanner.nextLine().trim());
+            scanner.nextLine();
             /* scanner.nextLine(); */
         } catch (NumberFormatException e) {
             minPrice = Double.NEGATIVE_INFINITY;
@@ -102,7 +107,12 @@ public class Inventory  {
         System.out.print("Maximum Price (enter 'any' for any): ");
         double maxPrice;
         try {
+            while (!scanner.hasNextDouble() && !scanner.next().equals("any")) {
+                userInput = scanner.next();
+                System.out.println("Invalid input. Please enter a double");
+            }
             maxPrice = Double.parseDouble(scanner.nextLine().trim());
+            scanner.nextLine();
             /* scanner.nextLine(); */
         } catch (NumberFormatException e) {
             maxPrice = Double.POSITIVE_INFINITY;

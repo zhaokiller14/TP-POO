@@ -21,6 +21,7 @@ public class AuthenticationManager {
     public boolean verifyAdminStatus(Scanner scanner) {
         System.out.println("Enter the secret code to verify admin status:");
         String inputCode = scanner.nextLine();
+        System.out.println("");
         return secretCode.equals(inputCode);
     }
     public AuthenticationManager() {
@@ -111,30 +112,51 @@ public class AuthenticationManager {
     }
     public void displayCustomers() {
         System.out.println("List of Customers: ");
+        System.out.println("");
         for (String C:userDatabase.keySet()) {
             if (userDatabase.get(C) instanceof Customer) {
                 System.out.println(C);
             }
         }
     }
+    public void displayAdmins() {
+        System.out.println("List of Admins: ");
+        System.out.println("");
+        for (String C:userDatabase.keySet()) {
+            if (userDatabase.get(C) instanceof Admin) {
+                System.out.println(C);
+            }
+        }
+    }
     public void hackerInterface(Scanner myObj,Inventory inv) {
+        System.out.println("");
+        System.out.println("-----------------------");
         System.out.println("Oh no! Mr.Robot has hacked into E-CORP!");
         System.out.println("We are doomed!");
         System.out.println("-----------------------");
         System.out.println("Go ahead, unleash chaos");
+        System.out.println("");
         int choice;
+        String userInput;
         do {
+            System.out.println("");
             System.out.println("******************************************");
             System.out.println("1 - Make all of the products free");
             System.out.println("2 - Delete all admin accounts");
-            System.out.println("3 - Delete product database and empty the inventory");
+            System.out.println("3 - Delete product database");
             System.out.println("4 - Delete user database");
             System.out.println("5 - Delete customer files");
             System.out.println("6 - Exit");
             System.out.println("******************************************");
+            System.out.println("");
             System.out.println("Choose a feature by digit");
+            while (!myObj.hasNextInt()) {
+                userInput = myObj.next();
+                System.out.println("Invalid input. Please enter an int");
+            }
             choice = myObj.nextInt();
             myObj.nextLine();
+            System.out.println("");
             switch (choice) {
                 case 1:
                     for (Product P : inv.inventory.productList) {
@@ -149,12 +171,15 @@ public class AuthenticationManager {
                     break;
                 case 3 :
                     deleteFile("product_database.txt");
+                    System.out.println("What products?");
                     break;
                 case 4:
                     deleteFile(DATABASE_FILE_PATH);
+                    System.out.println("They nothing about us");
                     break;
                 case 5:
-                    deleteDirectory("customerse");
+                    deleteDirectory("customers");
+                    System.out.println("What records?");
                     break;
                 case 6:
                     System.out.println("Revenge taken.");
@@ -211,7 +236,6 @@ public class AuthenticationManager {
         }
     }
     public void deleteAdminLines(File inputFile) {
-            String filePath = "path/to/your/file.txt";
     
             try {
                 File tempFile = new File("tempFile.txt");

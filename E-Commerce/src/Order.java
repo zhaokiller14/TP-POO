@@ -36,7 +36,6 @@ public class Order implements Serializable {
             List<Transaction> loadedTransactions = (List<Transaction>) ois.readObject();
             transactions.addAll(loadedTransactions);
         } catch (FileNotFoundException e) {
-            System.out.println("No existing order file found. Starting with an empty order list.");
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error loading transactions from file: " + e.getMessage());
         }
@@ -49,7 +48,7 @@ public class Order implements Serializable {
             for (int i=0;i<transactions.size();i++) {
                 Transaction T=transactions.get(i);
                 Product P = T.getProduct();
-                System.out.println(i+" - Product name: "+P.getName()+" Quantity: "+P.getQuantity()+" Total Price: "+P.getPrice()*P.getQuantity()+" Time: "+T.getTransactionTime());
+                System.out.println(i+" - Product name: "+P.getName()+" | Quantity: "+P.getQuantity()+" | Total Price: "+P.getPrice()*P.getQuantity()+" | Time: "+T.getTransactionTime());
             }
         }
     }

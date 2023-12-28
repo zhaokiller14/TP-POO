@@ -20,7 +20,10 @@ public class Customer extends User {
 
     public void customerInterface(Scanner myObj, Inventory mainInventory) {
         int choice;
+        String userInput;
+        System.out.println("Discount codes are : DISCOUNT5 - SALE10 - SPECIAL20");
         do {
+            System.out.println("");
             System.out.println("*******Customer Interface*******");
             System.out.println("1 - View Inventory");
             System.out.println("2 - Add To Cart");
@@ -34,39 +37,65 @@ public class Customer extends User {
             System.out.println("10 - Display your order history");
             System.out.println("11 - Logout");
             System.out.println("*********************************");
+            System.out.println("");
             System.out.println("Choose a feature by digit: ");
             choice=myObj.nextInt();
             myObj.nextLine();
+            System.out.println("");
             switch (choice) {
                 case 1:
                     mainInventory.listDisplay();
                     break;
                 case 2:
                     System.out.println("Choose product number");
-                    int i= myObj.nextInt();
+                    while (!myObj.hasNextInt()) {
+                        userInput = myObj.next();
+                        System.out.println("Invalid input. Please enter an int");
+                    }
+                    int i = myObj.nextInt();
                     myObj.nextLine();
                     System.out.println("Choose desired quantity");
+                    while (!myObj.hasNextInt()) {
+                        userInput = myObj.next();
+                        System.out.println("Invalid input. Please enter an int");
+                    }
                     int q = myObj.nextInt();
                     myObj.nextLine();
                     shoppingCart.addToWishlist(i, q,mainInventory.inventory);
                     break;
                 case 3:
                     System.out.println("Choose product number");
-                    int a= myObj.nextInt();
+                    while (!myObj.hasNextInt()) {
+                        userInput = myObj.next();
+                        System.out.println("Invalid input. Please enter an int");
+                    }
+                    int a = myObj.nextInt();
                     myObj.nextLine();
                     shoppingCart.removeFromWishlist(a);
                     break;
                 case 4:
-                    System.out.println("Choose product shopping cart number");
-                    int b= myObj.nextInt();
+                    System.out.println("Choose product number");
+                    while (!myObj.hasNextInt()) {
+                        userInput = myObj.next();
+                        System.out.println("Invalid input. Please enter an int");
+                    }
+                    int b = myObj.nextInt();
                     myObj.nextLine();
                     System.out.println("Choose new quantity");
-                    int c= myObj.nextInt();
+                    while (!myObj.hasNextInt()) {
+                        userInput = myObj.next();
+                        System.out.println("Invalid input. Please enter an int");
+                    }
+                    int c = myObj.nextInt();
                     myObj.nextLine();
                     shoppingCart.updateQuantity(b, c);
                     break;
                 case 5:
                     System.out.println("Choose product number");
+                    while (!myObj.hasNextInt()) {
+                        userInput = myObj.next();
+                        System.out.println("Invalid input. Please enter an int");
+                    }
                     int n = myObj.nextInt();
                     myObj.nextLine();
                     mainInventory.displayProductDetails(n);
@@ -76,6 +105,10 @@ public class Customer extends User {
                     break;
                 case 7:
                     System.out.println("Enter product number in cart to order:");
+                    while (!myObj.hasNextInt()) {
+                        userInput = myObj.next();
+                        System.out.println("Invalid input. Please enter an int");
+                    }
                     int pn = myObj.nextInt();
                     myObj.nextLine();
                     double v = shoppingCart.order(pn,mainInventory.inventory,orderHistory,myObj);
@@ -83,7 +116,7 @@ public class Customer extends User {
                         processPayment(v,myObj);
                         orderHistory.saveTransactionsToFile(orderHistoryFile.getAbsolutePath());
                     } else {
-                        System.out.println("amount=0");
+                        System.out.println("Invalid order");
                     }
                     
                     break;
@@ -100,7 +133,7 @@ public class Customer extends User {
                             processPaymentCheckout(total,myObj,NumItems);
                             orderHistory.saveTransactionsToFile(orderHistoryFile.getAbsolutePath());
                         } else {
-                            System.out.println("amount=0");
+                            System.out.println("Invalid order");
                         }
                     }
                     break;
@@ -127,10 +160,14 @@ public class Customer extends User {
         System.out.println("Choose payment method:");
         System.out.println("1 - Credit Card");
         System.out.println("2 - PayPal");
-
+        String userInput;
         int paymentMethod;
         do {
             System.out.println("Choose [1] or [2]");
+            while (!scanner.hasNextInt()) {
+                userInput = scanner.next();
+                System.out.println("Invalid input. Please enter an int");
+            }
             paymentMethod = scanner.nextInt();
             scanner.nextLine();
         } while (paymentMethod!=1 && paymentMethod!=2);
@@ -185,10 +222,14 @@ public class Customer extends User {
         System.out.println("Choose payment method:");
         System.out.println("1 - Credit Card");
         System.out.println("2 - PayPal");
-
+        String userInput;
         int paymentMethod;
         do {
             System.out.println("Choose [1] or [2]");
+            while (!scanner.hasNextInt()) {
+                userInput = scanner.next();
+                System.out.println("Invalid input. Please enter an int");
+            }
             paymentMethod = scanner.nextInt();
             scanner.nextLine();
         } while (paymentMethod!=1 && paymentMethod!=2);

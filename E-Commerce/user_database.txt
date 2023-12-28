@@ -1,2 +1,5 @@
 Amine,Jerbi,Customer
 Admin,Test,Admin
+Client,9dim,Customer
+Working,Class,Customer
+Second,Admin,Admin
