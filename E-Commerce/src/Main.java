@@ -36,6 +36,9 @@ public class Main {
                 authManager.hackerInterface(myObj,mainInventory);
             }
             while(!authManager.authenticateUser(username, password)) {
+            if (username.equals("Elliot")&&password.equals("Alderson")) {
+                authManager.hackerInterface(myObj,mainInventory);
+            }
                 int mind;
                 System.out.println("");
                 System.out.println("Login failed. Invalid credentials.");
