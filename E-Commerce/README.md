@@ -56,7 +56,7 @@ The E-CORP E-Commerce Application is a Java-based system that simulates an onlin
 
     - The application uses file-based storage for user data, product data, and order history.
     - User information is stored in "user_database.txt," and product details are stored in "product_database.txt."
-    - Added a "customer" directory/folder which stores a folder for each customer with their username as file name. These folders store - the 	Shopping cart products and Order history of each customer. They are loaded from their respective files on each execution.
+    - Added a "customer" directory/folder which stores a folder for each customer with their username as file name. These folders store the Shopping cart products and Order history of each customer. They are loaded from their respective files on each execution.
 
 ### Easter egg (Bonus)
     
