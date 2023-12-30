@@ -140,7 +140,7 @@ public class AuthenticationManager {
         String userInput;
         do {
             System.out.println("");
-            System.out.println("******************************************");
+            System.out.println("*************Hacker Interface*************");
             System.out.println("1 - Make all of the products free");
             System.out.println("2 - Delete all admin accounts");
             System.out.println("3 - Delete product database");
