@@ -1,4 +1,4 @@
-E-CORP E-Commerce Application
+####E-CORP E-Commerce Application
 Project Overview:
 
 The E-CORP E-Commerce Application is a Java-based system that simulates an online shopping platform. The application includes several features to facilitate user interaction, product management, and secure authentication.
