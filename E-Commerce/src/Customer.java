@@ -44,7 +44,7 @@ public class Customer extends User {
             System.out.println("");
             switch (choice) {
                 case 1:
-                    mainInventory.listDisplay();
+                    mainInventory.listDisplay(orderHistory);
                     break;
                 case 2:
                     System.out.println("Choose product number");

@@ -52,4 +52,29 @@ public class Order implements Serializable {
             }
         }
     }
+    public String getFaveCategory() {
+        String ch="none";
+        int nb_Elc=0;
+        int nb_Cl=0;
+        int nb_Bk=0;
+        if (!transactions.isEmpty()) {
+            for (Transaction T : transactions) {
+                if (T.getProduct() instanceof Electronics) {
+                    nb_Elc++;
+                } else if (T.getProduct() instanceof Clothing) {
+                    nb_Cl++;
+                } else {
+                    nb_Bk++;
+                }
+            }
+            if (nb_Elc > nb_Cl && nb_Elc > nb_Bk) {
+                ch="Electronics";
+            } else if (nb_Cl > nb_Elc && nb_Cl > nb_Bk){
+                ch="Clothing";
+            } else if (nb_Bk > nb_Cl && nb_Elc < nb_Bk){
+                ch="Book";
+            }
+        }
+        return ch;
+    }
 }

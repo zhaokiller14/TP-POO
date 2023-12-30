@@ -82,6 +82,65 @@ public class Inventory  {
             }
         }
     }
+    public void listDisplay(Order orderHistory) {
+        if (inventory.productList.isEmpty()) {
+            System.out.println("Inventory is empty");
+        } else {
+            System.out.println("List of products in inventory: ");
+            System.out.println("");
+            if (orderHistory.getFaveCategory()!="") {
+                int faveCount=0;
+                System.out.println("<<<<<<<<<<<<<<<<<<<<->>>>>>>>>>>>>>>>>>>>");
+                System.out.println("");
+                System.out.println("Recommended to you since your favourite category is "+orderHistory.getFaveCategory()+":");
+                System.out.println("");
+                for (int i=0;i<inventory.productList.size();i++) {
+                    Product P=inventory.productList.get(i);
+                    if (isInstanceOf(P,orderHistory.getFaveCategory())) {
+                        System.out.println(faveCount+" - Name: "+P.getName()+" | Price: "+P.getPrice()+" | State: "+P.getState());
+                        faveCount++;
+                        if (P.getState()==StockState.LOW_STOCK) {
+                            System.out.println("         Quantity: "+P.getQuantity());
+                        }
+                    }
+                }
+                System.out.println("");
+                System.out.println("<<<<<<<<<<<<<<<<<<<<->>>>>>>>>>>>>>>>>>>>");
+                System.out.println("");
+                for (int i=0;i<inventory.productList.size();i++) {
+                    Product P=inventory.productList.get(i);
+                    if (!isInstanceOf(P,orderHistory.getFaveCategory())) {
+                        System.out.println((i+faveCount)+" - Name: "+P.getName()+" | Price: "+P.getPrice()+" | State: "+P.getState());
+                        if (P.getState()==StockState.LOW_STOCK) {
+                            System.out.println("         Quantity: "+P.getQuantity());
+                        }
+                    }
+                }
+            } else {
+                for (int i=0;i<inventory.productList.size();i++) {
+                    Product P=inventory.productList.get(i);
+                    System.out.println(i+" - Name: "+P.getName()+" | Price: "+P.getPrice()+" | State: "+P.getState());
+                    if (P.getState()==StockState.LOW_STOCK) {
+                        System.out.println("         Quantity: "+P.getQuantity());
+                    }
+                    
+                }
+            }
+        }
+    }
+    private static boolean isInstanceOf(Object obj, String className) {
+        try {
+            // Use reflection to get the Class object from the class name
+            Class<?> clazz = Class.forName(className);
+
+            // Check if the object is an instance of the specified class
+            return clazz.isInstance(obj);
+        } catch (ClassNotFoundException e) {
+            // Handle the case where the class is not found
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public void search(Scanner scanner) {
         String userInput;
