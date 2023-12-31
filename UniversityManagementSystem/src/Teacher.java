@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 class Teacher extends Person {
-    int teacherId;
+    private int teacherId;
     List<Subject> subjects;
 
     public Teacher(String name, int age, int teacherId) {
@@ -12,5 +12,8 @@ class Teacher extends Person {
 
     public void assignSubject(Subject subject) {
         subjects.add(subject);
+    }
+    public int getId() {
+        return teacherId;
     }
 }

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 class Club {
-    String clubName;
+    private String clubName;
     List<Person> members;
 
     public Club(String clubName) {
@@ -18,7 +18,10 @@ class Club {
     public void displayMembers() {
         System.out.println("Club "+clubName+" members are: ");
         for (Person P : members) {
-            System.out.println(P.name);
+            System.out.println(P.getName());
         }
+    }
+    public String getClubName() {
+        return clubName;
     } 
 }

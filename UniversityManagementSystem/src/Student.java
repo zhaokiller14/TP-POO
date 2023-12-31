@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 class Student extends Person {
-    int studentId;
+    private int studentId;
     List<Course> courses;
 
     public Student(String name, int age, int studentId) {
@@ -20,9 +20,12 @@ class Student extends Person {
         C.addMember(this);
     }
     public void courseDisplay() {
-        System.out.println("Student "+name+" enrolled in courses: ");
+        System.out.println("Student "+getName()+" enrolled in courses: ");
         for (Course C : courses) {
-            System.out.println(C.courseCode);
+            System.out.println(C.getCode());
         }
+    }
+    public int getId() {
+        return studentId;
     }
 }

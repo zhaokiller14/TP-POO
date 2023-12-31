@@ -3,12 +3,24 @@ import java.util.List;
 import java.util.ArrayList;
 
 class Event {
-    String eventName;
-    Date eventDate;
+    private String eventName;
+    private Date eventDate;
     List<Person> participants;
-    Club organizer;
-    double participationFee;
+    private Club organizer;
+    private double participationFee;
 
+    public String getEventName() {
+        return eventName;
+    }
+    public Date getEventDate() {
+        return eventDate;
+    }
+    public Club getOrganizer() {
+        return organizer;
+    }
+    public double getParticipationFee() {
+        return participationFee;
+    }
     public Event(String eventName, Date eventDate,double fees,Club organizer) {
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -18,7 +30,7 @@ class Event {
     }
 
     public void addParticipant(Person person) {
-        System.out.println(person.name+" wants to participate in event: "+eventName);
+        System.out.println(person.getName()+" wants to participate in event: "+eventName);
         participants.add(person);
         feesManager(person);
     }
@@ -30,9 +42,9 @@ class Event {
         }
     }
     public void displayParticipants() {
-        System.out.println("Event "+eventName+"by club "+organizer.clubName+" Participants are: ");
+        System.out.println("Event "+eventName+"by club "+organizer.getClubName()+" Participants are: ");
         for (Person P : participants) {
-            System.out.println(P.name);
+            System.out.println(P.getName());
         }
     } 
 }

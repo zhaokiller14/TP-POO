@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 class Course {
-    String courseCode;
+    private String courseCode;
     List<Subject> subjects;
-    Teacher teacher;
-    Classroom classroom;
-    Group group;
+    private Teacher teacher;
+    private Classroom classroom;
+    private Group group;
 
     public Course(String courseCode) {
         this.courseCode = courseCode;
@@ -31,10 +31,22 @@ class Course {
         System.out.println("Course code: "+courseCode);
         System.out.println("Subjects: ");
         for (Subject S : subjects) {
-            System.out.println(S.subjectName);
+            System.out.println(S.getSubjectName());
         }
-        System.out.println("Teacher : "+teacher.name);
+        System.out.println("Teacher : "+teacher.getName());
         System.out.println("Classroom: "+classroom.roomNumber);
-        System.out.println("Group: "+group.groupName);
+        System.out.println("Group: "+group.getGroupName());
+    }
+    public String getCode() {
+        return courseCode;
+    }
+    public Teacher getTeacher() {
+        return teacher;
+    }
+    public Classroom getClassroom() {
+        return classroom;
+    }
+    public Group getGroup() {
+        return group;
     }
 }
